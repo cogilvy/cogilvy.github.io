@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bulma-components'
+import { Link, animateScroll as scroll } from "react-scroll";
 
 class NavBar extends Component {
 
@@ -23,22 +23,23 @@ class NavBar extends Component {
               Projects
             </a>
 
+            <a name="resume" onClick={this.props.handlePageChange} class="navbar-item">
+              Resume
+            </a>
+
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
                 Links
               </a>
               <div class="navbar-dropdown">
-                <a href="https://github.com/cogilvy" class="navbar-item">
+                <a href="https://github.com/cogilvy" target="_blank" class="navbar-item">
                   Github
                 </a>
-                <a href="https://www.linkedin.com/in/chris-ogilvy-243976102/" class="navbar-item">
+                <a href="https://www.linkedin.com/in/chris-ogilvy-243976102/" target="_blank" class="navbar-item">
                   LinkedIn
                 </a>
-                <a class="navbar-item">
+                <a href="https://medium.com/@chrisogilvy717" target="_blank" class="navbar-item">
                   Blog
-                </a>
-                <a class="navbar-item">
-                  Twitter
                 </a>
               </div>
             </div>

@@ -1,13 +1,14 @@
 import React from 'react';
-import HomePage from './HomePage'
+import Resume from './Resume'
 import ProjectsContainer from './ProjectsContainer'
+import LandingPage from './LandingPage'
 import NavBar from './NavBar'
-import './App.css';
+import './App.sass';
 
 class App extends React.Component {
 
   state = {
-    activeItem: "home"
+    activeItem: "landing"
   }
 
   handlePageChange = (e) => {
@@ -16,17 +17,29 @@ class App extends React.Component {
     })
   }
 
+  renderComponent = (activeItem) => {
+    switch (activeItem) {
+      case "resume":
+        return <Resume handlePageChange={this.handlePageChange}/>
+      case "projects":
+        return <ProjectsContainer/>
+      default:
+        return 0
+        break;
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <NavBar handlePageChange={this.handlePageChange}/>
-        {
-          this.state.activeItem === "home" ?
-          <HomePage />
-          :
-          <ProjectsContainer />
-        }
-      </div>
+        this.state.activeItem === "landing" ?
+        <div className="App">
+          <LandingPage/>
+        </div>
+        :
+        <div className="App">
+          <NavBar handlePageChange={this.handlePageChange}/>
+          {this.renderComponent(this.state.activeItem)}
+        </div>
     );
   }
 }
